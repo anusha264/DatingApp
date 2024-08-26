@@ -1,4 +1,5 @@
 ﻿using API.Data;
+using API.Data.Migrations;
 using API.Interfaces;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,8 @@ public static class ApplicationServiceExtensions
         services.AddCors();
 
         services.AddScoped<ITokenService, TokenService>();
-
+        services.AddScoped<IUserRespository, UserRespository>();
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         return services;
     }
 }
